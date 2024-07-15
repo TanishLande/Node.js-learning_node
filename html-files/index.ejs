@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('./partials/head.ejs') %>
+<body>
+  <%- include('./partials/nav.ejs') %>
+
+  <div class="container home">
+  
+    <h1>Home Page!</h1>
+    <p>This is the home page.</p>
+    <h2>Diary notes:</h2>
+    <% if (notes.length > 0) { %>
+      <% notes.forEach(note => { %>
+      <div class="home-home">
+        <a class="page-link" href="/page/<%= note._id %>">
+        <h3 my-4><%= note.title %></h3>
+        <p><%= note.snippet %></p>
+        </a>
+      </div>
+      <% }) %>
+    <% } else { %>
+      <p>No notes available.</p>
+    <% } %>
+  
+  </div>
+
+
+  <!-- Bootstrap JS, Popper.js, and jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
+  <%- include('./partials/footer.ejs') %>
+</body>
+</html>

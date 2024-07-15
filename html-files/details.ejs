@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('./partials/head.ejs') %>
+<body>
+  <%- include('./partials/nav.ejs') %>
+
+  <div class=" details container">
+    <h3>Details</h3>
+    <h5><%= page.title %>:</h5>
+    <div class="container">
+        <p><%= page.body%></p>
+        <a class="deletee" data-doc="<%= page._id %>">Delete</a>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const trashcan = document.querySelector('a.deletee');
+
+      if (trashcan) {
+        trashcan.addEventListener('click', (e) => {
+          e.preventDefault(); // Prevent default link behavior
+
+          const endpoint = `/page/${trashcan.dataset.doc}`;
+
+          fetch(endpoint, {
+            method: 'DELETE'
+          })
+          .then(response => response.json())
+          .then(data => window.location.href = data.redirect)
+          .catch(err => {
+            console.log(err);
+          });
+        });
+      }
+    });
+  </script>
+
+  <!-- Bootstrap JS, Popper.js, and jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
+  <%- include('./partials/footer.ejs') %>
+</body>
+</html>

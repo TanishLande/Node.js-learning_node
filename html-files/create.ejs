@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('./partials/head.ejs') %>
+</head>
+<body>
+  <%- include('./partials/nav.ejs') %>
+
+      <div class="container">
+        <form action="/page" method="POST">
+            <div class="mb-3">
+              <label for="title" class="form-label">Page Title</label>
+              <input type="text" class="form-control" id="title" name="title" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+              <label for="snippet" class="form-label">Page Snipped:</label>
+              <input type="text" class="form-control" id="snippet" name="snippet">
+            </div>
+            <div class="mb-3">
+              <label for="body" class="form-label">Page Content:</label>
+              <input type="text" class="form-control" id="body" name="body">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+      </div>
+
+      <%- include('./partials/footer.ejs') %>
+
+    
+</body>
+</html>
